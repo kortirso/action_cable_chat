@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
     devise_for :users
-    resources :chat, only: :index
-    root 'chat#index'
+    resources :rooms, only: [:index, :show]
+    root 'rooms#index'
 end

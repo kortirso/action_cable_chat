@@ -8,4 +8,9 @@ html lang='en'
         = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
         = csrf_meta_tag
     body
-        == yield
+        - if current_user
+            #chat_page
+                = render 'shared/left_block'
+                == yield
+        - else
+            == yield

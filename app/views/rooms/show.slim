@@ -1,0 +1,5 @@
+- provide(:title, 'Милая беседа')
+.right_block
+    .container
+        .row
+            h2= "Ваш собеседник - #{@room.with_user(current_user.id)}"

@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
     def get_access
         render template: 'welcome/index' unless current_user
     end
+
+    def get_contacts_list
+        @rooms = current_user.rooms
+    end
 end

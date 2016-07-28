@@ -1,0 +1,10 @@
+.left_block
+    header
+        p#username= current_user.username
+        = link_to 'Выйти', destroy_user_session_path, method: :delete, class: 'btn btn-sm btn-danger', id: 'destroy'
+    .search_block
+        p Поиск контактов
+    .contacts_block
+        p Список контактов
+        - @rooms.each do |room|
+            p= link_to room.with_user(current_user.id), room_path(room)

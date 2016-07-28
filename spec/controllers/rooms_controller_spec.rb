@@ -1,4 +1,4 @@
-RSpec.describe ChatController, type: :controller do
+RSpec.describe RoomsController, type: :controller do
     describe 'GET #index' do
         it 'redirect to welcome page if user not login' do
             get :index
