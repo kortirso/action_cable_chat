@@ -14,6 +14,8 @@ gem 'figaro'
 gem 'foundation-rails'
 gem 'autoprefixer-rails'
 gem 'slim'
+gem 'devise'
+gem 'simple_form'
 
 group :development, :test do
     gem 'rspec-rails'
