@@ -1,9 +1,9 @@
 class User < ApplicationRecord
     devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
-    has_many :roommates
+    has_many :roommates, dependent: :destroy
     has_many :rooms, through: :roommates
-    has_many :messages
+    has_many :messages, dependent: :destroy
 
     validates :username, presence: true
     validates :username, uniqueness: true, length: { in: 1..20 }

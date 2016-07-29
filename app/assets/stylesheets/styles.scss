@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Ubuntu&subset=latin,cyrillic');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:400,300&subset=latin,cyrillic');
 
 * {
     font-family: 'Ubuntu', sans-serif !important;
@@ -8,6 +8,7 @@
 html, body {
     margin: 0;
     padding: 0;
+    height: 100%;
 }
 
 body {
@@ -39,12 +40,98 @@ body {
 }
 
 #chat_page {
+    height: 100%;
     .left_block {
+        height: 100%;
         float: left;
         width: 20%;
+        padding: 10px;
     }
     .right_block {
+        position: relative;
+        height: 100%;
         width: 80%;
         margin-left: 20%;
+        padding: 10px;
+        &:before, &:after {
+            content: " ";
+            display: table;
+        }
+        &:after {
+            clear: both;
+        }
+        .middle {
+            height: 78%;
+            margin: 2% 0;
+            padding: 10px 0;
+            overflow: hidden;
+            overflow-y: scroll;
+            &::-webkit-scrollbar {
+                width: 6px;
+            }
+            &::-webkit-scrollbar-track {
+                -webkit-border-radius: 6px;
+                border-radius: 6px;
+            }
+            &::-webkit-scrollbar-thumb {
+                -webkit-border-radius: 6px;
+                border-radius: 6px;
+                background: rgba(217,217,217,0.8);
+                -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+            }
+        }
+        .header {
+            height: 8%;
+            border-bottom: 1px solid #AAA;
+        }
+    }
+}
+
+#new_message_block {
+    background: #FFF;
+    position: fixed;
+    width: 78%;
+    bottom: 0;
+    border-top: 1px solid #AAA;
+    padding: 10px 0;
+    input {
+        margin: 0;
+    }
+}
+
+#messages {
+    font-weight: 300;
+    .message {
+        width: 70%;
+        p {
+            margin-bottom: 0;
+        }
+        .body {
+            margin-bottom: 3px;
+            position: relative;
+            .time {
+                position: absolute;
+                right: -50px;
+                top: 5px;
+                font-size: 14px;
+                color: #AAA;
+            }
+            .text {
+                padding: 5px 20px;
+                border-radius: 3px;
+            }
+        }
+        &.users {
+            margin: 0 10% 0 20%;
+            .text {
+                background: #dcf2fa;
+            }
+        }
+        &.roommates {
+            margin-right: 30%;
+            .text {
+                background: #bfe9f9;
+            }
+        }
     }
 }
