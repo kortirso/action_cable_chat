@@ -4,6 +4,6 @@ class Room < ApplicationRecord
     has_many :messages, dependent: :destroy
 
     def with_user(user_id)
-        self.roommates.where.not(user_id: user_id).first.user.username
+        self.roommates.where.not(user_id: user_id).first.user
     end
 end

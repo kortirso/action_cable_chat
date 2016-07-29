@@ -11,4 +11,14 @@ RSpec.describe Message, type: :model do
         
         expect(message).to be_valid
     end
+
+    describe 'Message' do
+        context '.timestamp' do
+            let(:message) { create :message }
+
+            it 'should be view hours and minutes' do
+                expect(message.timestamp).to eq message.created_at.strftime('%H:%M')
+            end
+        end
+    end
 end

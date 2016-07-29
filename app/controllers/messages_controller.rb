@@ -3,8 +3,6 @@ class MessagesController < ApplicationController
 
     def create
         message = Message.create(message_params)
-        ActionCable.server.broadcast "rooms_#{params['message']['room_id']}_channel", message: message.body, user: message.user.username, time: message.created_at.strftime('%H:%M')
-        head :ok
     end
 
     private

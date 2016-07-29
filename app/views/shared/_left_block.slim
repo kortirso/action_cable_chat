@@ -1,10 +1,15 @@
 .left_block
     header
-        p#username= current_user.username
-        = link_to 'Выйти', destroy_user_session_path, method: :delete, class: 'btn btn-sm btn-danger', id: 'destroy'
+        p#username
+            = gravatar_for current_user.username, current_user.email
+            = current_user.username
+        = link_to 'Выйти', destroy_user_session_path, method: :delete, class: 'button', id: 'destroy'
     .search_block
         p Поиск контактов
     .contacts_block
         p Список контактов
         - @rooms.each do |room|
-            p= link_to room.with_user(current_user.id), room_path(room)
+            p
+                - user = room.with_user(current_user.id)
+                = gravatar_for user.username, user.email
+                = link_to user.username, room_path(room), 'data-turbolinks': 'false'

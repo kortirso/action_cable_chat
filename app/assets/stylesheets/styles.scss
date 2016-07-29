@@ -39,6 +39,12 @@ body {
     }
 }
 
+.gravatar {
+    width: 30px;
+    margin-right: 5px;
+    border-radius: 5px;
+}
+
 #chat_page {
     height: 100%;
     .left_block {
@@ -46,6 +52,14 @@ body {
         float: left;
         width: 20%;
         padding: 10px;
+        .contacts_block {
+            p {
+                margin-bottom: 5px;
+                a {
+                    color: #000;
+                }
+            }
+        }
     }
     .right_block {
         position: relative;

@@ -18,7 +18,7 @@ RSpec.describe Room, type: :model do
             let!(:roommate) { create :roommate, user: user_2, room: room }
 
             it 'should return username of another user in the room' do
-                expect(room.with_user(user_1.id)).to eq user_2.username
+                expect(room.with_user(user_1.id)).to eq user_2
             end
         end
     end
