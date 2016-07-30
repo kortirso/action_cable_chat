@@ -12,6 +12,7 @@ class Message < ApplicationRecord
     end
 
     private
+    
     def send_message
         ActionCable.server.broadcast "rooms_#{self.room_id}_channel", message: self.body, user: self.user.username, time: self.timestamp
     end

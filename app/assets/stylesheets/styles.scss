@@ -40,7 +40,6 @@ body {
 }
 
 .gravatar {
-    width: 30px;
     margin-right: 5px;
     border-radius: 5px;
 }
@@ -146,6 +145,32 @@ body {
             .text {
                 background: #bfe9f9;
             }
+        }
+    }
+}
+
+#searched, .invites_block .invite {
+    position: relative;
+    form {
+        position: absolute;
+        top: 3px;
+        .submit {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: none;
+        }
+    }
+    .create_button {
+        right: 24px;
+        .submit {
+            background: green;
+        }
+    }
+    .cancel_button {
+        right: 0;
+        .submit {
+            background: red;
         }
     }
 }

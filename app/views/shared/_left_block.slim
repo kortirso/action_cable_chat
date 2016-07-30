@@ -1,13 +1,32 @@
-.left_block
+.left_block#user data={ owner: "#{current_user.id}" }
     header
         p#username
             = gravatar_for current_user.username, current_user.email
             = current_user.username
         = link_to 'Выйти', destroy_user_session_path, method: :delete, class: 'button', id: 'destroy'
     .search_block
-        p Поиск контактов
+        p.head Поиск контактов
+        = form_tag('/invites/search', method: 'post', remote: true) do
+            = hidden_field_tag :user_id, current_user.id
+            = text_field_tag :username, nil, placeholder: 'Username'
+            = submit_tag 'Найти', class: 'button', 'data-turbolinks': 'false'
+        #searched
+    .invites_block
+        p.head Список приглашений
+        - @invites.each do |invite|
+            .invite id="invite_#{invite.id}"
+                p= invite.user.username
+                = form_tag('/invites/accept', method: 'post', remote: true, class: 'create_button') do
+                    = hidden_field_tag :user_id, current_user.id
+                    = hidden_field_tag :invite_id, invite.id
+                    = hidden_field_tag :accept, true
+                    = submit_tag '', class: 'submit', 'data-turbolinks': 'false'
+                = form_tag('/invites/accept', method: 'post', remote: true, class: 'cancel_button') do
+                    = hidden_field_tag :user_id, current_user.id
+                    = hidden_field_tag :invite_id, invite.id
+                    = submit_tag '', class: 'submit', 'data-turbolinks': 'false'
     .contacts_block
-        p Список контактов
+        p.head Список контактов
         - @rooms.each do |room|
             p
                 - user = room.with_user(current_user.id)

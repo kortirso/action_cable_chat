@@ -9,9 +9,4 @@ html lang='en'
         = csrf_meta_tag
         = action_cable_meta_tag
     body
-        - if current_user
-            #chat_page
-                = render 'shared/left_block'
-                == yield
-        - else
-            == yield
+        == yield

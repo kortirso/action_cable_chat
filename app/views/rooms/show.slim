@@ -1,25 +1,27 @@
 - provide(:title, 'Беседка')
-.right_block
-    .header
-        p= "Ваш собеседник - #{@room.with_user(current_user.id).username}"
-    .middle
-        .row
-            .small-12.columns
-                #messages data={ owner: "#{current_user.username}", room: "#{@room.id}" }
-                    - current_name = ''
-                    - @messages.map do |message|
-                        .message class="#{message.user == current_user ? 'users' : 'roommates'}"
-                            - if current_name != message.user.username
-                                - current_name = message.user.username
-                                p.author= current_name
-                            .body
-                                span.time= message.timestamp
-                                .text= message.body
-    #new_message_block
-        = simple_form_for Message.new, remote: true do |f|
-            = f.hidden_field :room_id, value: @room.id
-            = f.hidden_field :user_id, value: current_user.id
-            .medium-10.columns
-                = f.input :body, class: 'form-control', label: false, placeholder: 'Сообщение'
-            .medium-2.columns
-                = f.button :submit, 'Отправить', class: 'button', data: { send: 'message' }
+#chat_page
+    = render 'shared/left_block'
+    .right_block
+        .header
+            p= "Ваш собеседник - #{@room.with_user(current_user.id).username}"
+        .middle
+            .row
+                .small-12.columns
+                    #messages data={ owner: "#{current_user.username}", room: "#{@room.id}" }
+                        - current_name = ''
+                        - @messages.map do |message|
+                            .message class="#{message.user == current_user ? 'users' : 'roommates'}"
+                                - if current_name != message.user.username
+                                    - current_name = message.user.username
+                                    p.author= current_name
+                                .body
+                                    span.time= message.timestamp
+                                    .text= message.body
+        #new_message_block
+            = simple_form_for Message.new, remote: true do |f|
+                = f.hidden_field :room_id, value: @room.id
+                = f.hidden_field :user_id, value: current_user.id
+                .medium-10.columns
+                    = f.input :body, class: 'form-control', label: false, placeholder: 'Сообщение'
+                .medium-2.columns
+                    = f.button :submit, 'Отправить', class: 'button', data: { send: 'message' }
