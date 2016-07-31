@@ -27,8 +27,8 @@
                     = submit_tag '', class: 'submit', 'data-turbolinks': 'false'
     .contacts_block
         p.head Список контактов
-        - @rooms.each do |room|
+        - @contacts.each do |contact|
             p
-                - user = room.with_user(current_user.id)
+                - user = contact.user
                 = gravatar_for user.username, user.email
-                = link_to user.username, room_path(room), 'data-turbolinks': 'false'
+                = link_to user.username, room_path(contact.room_id), 'data-turbolinks': 'false'

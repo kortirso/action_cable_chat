@@ -20,7 +20,7 @@ class InvitesController < ApplicationController
 
     def search_friend
         @friend = User.find_by(username: params[:username])
-        head :ok if @friend.nil?
+        head :ok if @friend.nil? || current_user.have_friend?(@friend.id)
     end
 
     def search_invite

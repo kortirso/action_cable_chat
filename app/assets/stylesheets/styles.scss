@@ -153,7 +153,7 @@ body {
     position: relative;
     form {
         position: absolute;
-        top: 3px;
+        top: 4px;
         .submit {
             width: 20px;
             height: 20px;
@@ -164,13 +164,13 @@ body {
     .create_button {
         right: 24px;
         .submit {
-            background: green;
+            background-image: image-url('accept.png');
         }
     }
     .cancel_button {
         right: 0;
         .submit {
-            background: red;
+            background-image: image-url('decline.png');
         }
     }
 }

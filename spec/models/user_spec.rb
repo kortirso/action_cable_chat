@@ -3,8 +3,11 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of :email }
     it { should validate_presence_of :password }
     it { should have_many :roommates }
+    it { should have_many :contacts }
     it { should have_many(:rooms).through(:roommates) }
     it { should have_many :messages }
+    it { should have_many :invitations }
+    it { should have_many :invites }
 
     describe 'User' do
         let(:user) { create :user }

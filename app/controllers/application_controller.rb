@@ -16,6 +16,6 @@ class ApplicationController < ActionController::Base
 
     def get_contacts_list
         @invites = current_user.invites
-        @rooms = current_user.rooms
+        @contacts = current_user.contacts
     end
 end
