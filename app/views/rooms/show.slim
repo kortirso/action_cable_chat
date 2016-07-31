@@ -3,7 +3,7 @@
     = render 'shared/left_block'
     .right_block
         .header
-            p= "Ваш собеседник - #{@room.with_user(current_user.id).username}"
+            p= "Ваш собеседник - #{@contact}"
         .middle
             .row
                 .small-12.columns

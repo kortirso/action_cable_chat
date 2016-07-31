@@ -1,17 +1,17 @@
 .left_block#user data={ owner: "#{current_user.id}" }
-    header
+    header.block
         p#username
             = gravatar_for current_user.username, current_user.email
             = current_user.username
         = link_to 'Выйти', destroy_user_session_path, method: :delete, class: 'button', id: 'destroy'
-    .search_block
+    .search_block.block
         p.head Поиск контактов
         = form_tag('/invites/search', method: 'post', remote: true) do
             = hidden_field_tag :user_id, current_user.id
             = text_field_tag :username, nil, placeholder: 'Username'
             = submit_tag 'Найти', class: 'button', 'data-turbolinks': 'false'
         #searched
-    .invites_block
+    .invites_block.block
         p.head Список приглашений
         - @invites.each do |invite|
             .invite id="invite_#{invite.id}"
@@ -25,10 +25,10 @@
                     = hidden_field_tag :user_id, current_user.id
                     = hidden_field_tag :invite_id, invite.id
                     = submit_tag '', class: 'submit', 'data-turbolinks': 'false'
-    .contacts_block
+    .contacts_block.block
         p.head Список контактов
         - @contacts.each do |contact|
-            p
-                - user = contact.user
+            - user = contact.user
+            .contact class="#{'active' if @contact && @contact == user.username}"
                 = gravatar_for user.username, user.email
                 = link_to user.username, room_path(contact.room_id), 'data-turbolinks': 'false'

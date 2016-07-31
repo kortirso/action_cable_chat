@@ -9,6 +9,7 @@ class RoomsController < ApplicationController
 
     def show
         @messages = @room.messages.includes(:user).order(id: :asc)
+        @contact = @room.with_user(current_user.id).username
     end
 
     private

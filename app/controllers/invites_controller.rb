@@ -8,7 +8,7 @@ class InvitesController < ApplicationController
     end
 
     def create
-        Invite.create user_id: params[:user_id], friend_id: params[:friend] unless params[:user_id].nil?
+        Invite.create user_id: params[:user_id], friend_id: params[:friend] if params[:user_id] && Invite.find_by(user_id: params[:user_id], friend_id: params[:friend]).nil?
     end
 
     def accept
