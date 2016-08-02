@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
+//= require rails_emoji_picker
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

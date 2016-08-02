@@ -16,12 +16,13 @@
                                     p.author= current_name
                                 .body
                                     span.time= message.timestamp
-                                    .text= message.body
+                                    .text= content_with_emoji(message.body)
         #new_message_block
-            = simple_form_for Message.new, remote: true do |f|
+            = form_for Message.new, remote: true do |f|
                 = f.hidden_field :room_id, value: @room.id
                 = f.hidden_field :user_id, value: current_user.id
                 .medium-10.columns
-                    = f.input :body, class: 'form-control', label: false, placeholder: 'Сообщение'
+                    p.emoji-picker-container
+                        = f.text_field :body, class: 'form-control', label: false, placeholder: 'Сообщение', data: { emojiable: true }
                 .medium-2.columns
-                    = f.button :submit, 'Отправить', class: 'button', data: { send: 'message' }
+                    = f.submit 'Отправить', class: 'button', data: { send: 'message' }

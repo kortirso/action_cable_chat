@@ -16,6 +16,7 @@ gem 'slim'
 gem 'devise'
 gem 'simple_form'
 gem 'activerecord-import'
+gem 'rails_emoji_picker'
 
 group :development, :test do
     gem 'rspec-rails'

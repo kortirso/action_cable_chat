@@ -3,7 +3,7 @@ $(function() {
     if(messages.length > 0) {
         App.messages = App.cable.subscriptions.create({ channel: 'RoomsChannel', room_id: messages.data('room') }, {
             received: function(data) {
-                $('#message_body').val('');
+                $('.emoji-wysiwyg-editor').html('');
                 messages.append(this.renderMessage(data, messages.data('owner')));
                 $('.middle').animate({ 'scrollTop': $('.middle')[0].scrollHeight }, 'slow');
             },

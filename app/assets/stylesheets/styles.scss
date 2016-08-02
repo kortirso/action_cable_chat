@@ -133,7 +133,19 @@ body {
             height: 8%;
             border-bottom: 1px solid #AAA;
         }
+        .emoji-picker-container {
+            min-width: 100%;
+        }
     }
+}
+
+.emoji-menu {
+    top: -280px !important;
+    left: -0 !important;
+}
+
+.emoji-wysiwyg-editor {
+    padding-top: 10px !important;
 }
 
 #new_message_block {
@@ -168,6 +180,14 @@ body {
             .text {
                 padding: 5px 20px;
                 border-radius: 3px;
+                position: relative;
+                .emoji-image {
+                    position: relative;
+                    top: -4px;
+                    .emoji {
+                        margin: 0;
+                    }
+                }
             }
         }
         &.users {
