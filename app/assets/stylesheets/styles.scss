@@ -135,6 +135,12 @@ body {
         }
         .emoji-picker-container {
             min-width: 100%;
+            margin: 0;
+            .emoji-picker-icon {
+                width: 20px;
+                height: 20px;
+                background-image: image-url('emoji_picker/icon.png');
+            }
         }
     }
 }
@@ -146,6 +152,10 @@ body {
 
 .emoji-wysiwyg-editor {
     padding-top: 10px !important;
+}
+
+.fa-smile-o:before {
+    content: none !important;
 }
 
 #new_message_block {
